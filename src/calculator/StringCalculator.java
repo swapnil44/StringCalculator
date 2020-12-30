@@ -66,6 +66,9 @@ public class StringCalculator {
 			if(no < 0) {
 				negativeNos.add(token);
 			}
+			if(no >1000) {
+				continue;
+			}
 			sum = sum+no;
 		}
 		return sum;
@@ -80,6 +83,9 @@ public class StringCalculator {
 			int no = Integer.parseInt(token);
 			if(no <0) {
 				negativeNos.add(token);
+			}
+			if(no >1000) {
+				continue;
 			}
 			sum += no;
 		}

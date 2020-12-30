@@ -66,6 +66,12 @@ public class CalculatorTest {
 		assertEquals(calculator.Add("//[**]\n1**5"), 6);
 	}
 	@Test
+	public void shouldIgnoreNumbersGreaterLimit() {
+		assertEquals(calculator.Add("1,1001"), 1);
+		assertEquals(calculator.Add("//[**]\n1001**5"), 5);
+	
+	}
+	@Test
 	public void shouldAcceptMultlepleDelimeter() {
 		fail("Not yet implemented");
 	
