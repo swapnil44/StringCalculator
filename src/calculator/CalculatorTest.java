@@ -3,7 +3,10 @@ package calculator;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
@@ -43,14 +46,19 @@ public class CalculatorTest {
 		assertEquals(calculator.Add("//%\n1%5"), 6);
 	
 	}
+	@Rule public ExpectedException rule =  ExpectedException.none();
 	@Test
 	public void shouldRaiseExceptionOnNegativeNumber() {
-		fail("Not yet implemented");
-	
+		rule.expect(IllegalArgumentException.class);
+		rule.expectMessage("negatives not allowed:-1");
+		calculator.Add("//;\n1;-1");
+//		calculator.Add("1\n1,-1,-2");
 	}
 	@Test
 	public void shouldRaiseExceptionOnMultipleNegativeNumbers() {
-		fail("Not yet implemented");
+		rule.expect(IllegalArgumentException.class);
+		rule.expectMessage("negatives not allowed:-1,-3,-4");
+		calculator.Add("//;\n1;-1;2;-3;-4");
 	
 	}
 	@Test

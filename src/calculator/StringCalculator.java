@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
 
 	public int Add(String inputString) {
@@ -21,28 +24,51 @@ public class StringCalculator {
 
 		String [] lines = inputString.split("\n");
 		String delimiter = getdelimiter(lines[0]);
-
+		List<String> negativeNos = new ArrayList<String>();
 		for(; lineNo <lines.length; lineNo++) {
-			sum  += addNumbersSeperatedByGivenDelimiter(lines[lineNo], delimiter);
+			sum  += addNumbersSeperatedByGivenDelimiter(lines[lineNo], delimiter,negativeNos);
 		}
-		return sum;
-
+		if(negativeNos.isEmpty()) {
+			return sum;
+		} 
+		throw new IllegalArgumentException("negatives not allowed:" + String.join(",", negativeNos)) ;
 	}
-	String getdelimiter(String delimiterToken) {
+	
+	private String getdelimiter(String delimiterToken) {
 		String delimiter = "";
 		return delimiter + delimiterToken.charAt(2);		
 	}
 
-
-
-	public int addNumbersSeperatedByGivenDelimiter(String delimiterSeperatedNumbers, String delimiter) {
+	private int addNumbersSeperatedByGivenDelimiter(String delimeterSeperatedNumbers, String delimeter, List<String> negativeNos) {
 		int sum  = 0;
-		String [] tokens = delimiterSeperatedNumbers.split(delimiter);
+		String [] tokens = delimeterSeperatedNumbers.split(delimeter);
 		for(String token : tokens) { 
 			int no = Integer.parseInt(token);
-			sum += no;
+			if(no < 0) {
+				System.out.println(no);
+				negativeNos.add(token);
+			}
+			sum = sum+no;
 		}
 		return sum;
+
+	}
+	
+	private int addNumbersSeperatedByGivenDelimiter(String delimiterSeperatedNumbers, String delimiter) {
+		int sum  = 0;
+		String [] tokens = delimiterSeperatedNumbers.split(delimiter);
+		List<String> negativeNos = new ArrayList<String>();
+		for(String token : tokens) { 
+			int no = Integer.parseInt(token);
+			if(no <0) {
+				negativeNos.add(token);
+			}
+			sum += no;
+		}
+		if(negativeNos.isEmpty()) {
+			return sum;
+		} 
+		throw new IllegalArgumentException("negatives not allowed:" + String.join("," , negativeNos)) ;
 
 	}
 
