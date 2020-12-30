@@ -33,7 +33,7 @@ public class CalculatorTest {
 
 	@Test
 	public void shouldAcceptNewLineAsValidDelimeter() {
-		fail("Not yet implemented");
+		assertEquals(calculator.Add("1,5,6\n4,5"), 21);
 	
 	}
 	@Test
