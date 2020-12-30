@@ -16,55 +16,54 @@ public class CalculatorTest {
 
 	@Test
 	public void shouldResturnZeroForEmptyString() {
-		assertEquals(calculator.add(""), 0);
+		assertEquals(calculator.Add(""), 0);
 	}
 	@Test
 	public void shouldResturnNumberForNumber() {
-		assertEquals(calculator.add("12"), 12);
+		assertEquals(calculator.Add("12"), 12);
 	}
 	@Test
 	public void shouldResturnSumOfNumbersForCommaDelimetedTwoNumbers() {
-		assertEquals(calculator.add("1,5"), 6);
+		assertEquals(calculator.Add("1,5"), 6);
 	}
 	@Test
 	public void shouldResturnSumOfMultipleNumbersDelimetedByComma() {
-		fail("Not yet implemented");
+		assertEquals(calculator.Add("1,5,4"), 10);
 	}
-//
-//	@Test
-//	public void shouldAcceptNewLineAsValidDelimeter() {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldAcceptCustomDelimeter() {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldRaiseExceptionOnNegativeNumber() {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldRaiseExceptionOnMultipleNegativeNumbers() {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldAcceptDelimeterOfLengthMoreThanOne () {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldAcceptMultlepleDelimeter() {
-//		fail("Not yet implemented");
-//	
-//	}
-//	@Test
-//	public void shouldAcceptMultlepleDelimetersWithMoreThanOneChar() {
-//		fail("Not yet implemented");
-//	
-//	}
+
+	@Test
+	public void shouldAcceptNewLineAsValidDelimeter() {
+		fail("Not yet implemented");
 	
+	}
+	@Test
+	public void shouldAcceptCustomDelimeter() {
+		fail("Not yet implemented");
+	
+	}
+	@Test
+	public void shouldRaiseExceptionOnNegativeNumber() {
+		fail("Not yet implemented");
+	
+	}
+	@Test
+	public void shouldRaiseExceptionOnMultipleNegativeNumbers() {
+		fail("Not yet implemented");
+	
+	}
+	@Test
+	public void shouldAcceptDelimeterOfLengthMoreThanOne () {
+		fail("Not yet implemented");
+	
+	}
+	@Test
+	public void shouldAcceptMultlepleDelimeter() {
+		fail("Not yet implemented");
+	
+	}
+	@Test
+	public void shouldAcceptMultlepleDelimetersWithMoreThanOneChar() {
+		fail("Not yet implemented");
+	
+	}
 }

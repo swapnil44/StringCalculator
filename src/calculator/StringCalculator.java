@@ -2,18 +2,18 @@ package calculator;
 
 public class StringCalculator {
 	
-	public int add(String inputString) {
+	public int Add(String inputString) {
 		if(inputString == "") {
 			return 0 ;
 		}
 		String[] nos = inputString.split(",");
-		if(nos.length ==1) {
-			return Integer.parseInt(nos[0]);
-		} else {
-			return Integer.parseInt(nos[0]) +Integer.parseInt(nos[1]);
-			
-		}	
+		int sum = 0;
+		for(String no : nos ) {
+			sum += Integer.parseInt(no);
+		}
+		return sum;
 	}
 	
 
 }
+
