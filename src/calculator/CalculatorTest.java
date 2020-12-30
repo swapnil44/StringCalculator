@@ -1,13 +1,11 @@
 package calculator;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import static org.junit.Assert.*;
 
 public class CalculatorTest {
 	StringCalculator calculator;
@@ -73,12 +71,12 @@ public class CalculatorTest {
 	}
 	@Test
 	public void shouldAcceptMultlepleDelimeter() {
-		fail("Not yet implemented");
+		assertEquals(calculator.Add("//[*][;]\n1*5;5"), 11);
 	
 	}
 	@Test
 	public void shouldAcceptMultlepleDelimetersWithMoreThanOneChar() {
-		fail("Not yet implemented");
+		assertEquals(calculator.Add("//[**][;]\n1**5;5"), 11);
 	
 	}
 }

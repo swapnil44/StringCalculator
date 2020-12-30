@@ -33,30 +33,34 @@ public class StringCalculator {
 		} 
 		throw new IllegalArgumentException("negatives not allowed:" + String.join(",", negativeNos)) ;
 	}
-	
+
 	public String getdelimiter(String delimeterString) {
 
 		if(delimeterString.indexOf('[')<0) {
 			return String.valueOf(delimeterString.charAt(2));	
 		}
-		
-		String delimeter = "";
+
+		List<String> delimiters = new ArrayList<>();
+		String delimiter = "";
 		for (int j = 3; j<delimeterString.length(); j++) {
 			char c = delimeterString.charAt(j);
 			if(c == '[')  { 
 				continue;
 			}
 			if(c == ']')  {
-				return delimeter;
+				delimiters.add(delimiter);
+				delimiter = "";
+				continue;
 			}
 			if(c == '*' ) {
-				delimeter += "\\*";
+				delimiter += "\\*";
 			} else {
-			delimeter += c;
+				delimiter += c;
 			}
-			
+
 		}
-		return delimeter;
+		String delimeterRegxExpression = String.join("|",delimiters);
+		return delimeterRegxExpression;
 	}
 	private int addNumbersSeperatedByGivenDelimiter(String delimeterSeperatedNumbers, String delimeter, List<String> negativeNos) {
 		int sum  = 0;
@@ -74,7 +78,7 @@ public class StringCalculator {
 		return sum;
 
 	}
-	
+
 	private int addNumbersSeperatedByGivenDelimiter(String delimiterSeperatedNumbers, String delimiter) {
 		int sum  = 0;
 		String [] tokens = delimiterSeperatedNumbers.split(delimiter);
