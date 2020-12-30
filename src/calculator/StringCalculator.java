@@ -34,18 +34,36 @@ public class StringCalculator {
 		throw new IllegalArgumentException("negatives not allowed:" + String.join(",", negativeNos)) ;
 	}
 	
-	private String getdelimiter(String delimiterToken) {
-		String delimiter = "";
-		return delimiter + delimiterToken.charAt(2);		
-	}
+	public String getdelimiter(String delimeterString) {
 
+		if(delimeterString.indexOf('[')<0) {
+			return String.valueOf(delimeterString.charAt(2));	
+		}
+		
+		String delimeter = "";
+		for (int j = 3; j<delimeterString.length(); j++) {
+			char c = delimeterString.charAt(j);
+			if(c == '[')  { 
+				continue;
+			}
+			if(c == ']')  {
+				return delimeter;
+			}
+			if(c == '*' ) {
+				delimeter += "\\*";
+			} else {
+			delimeter += c;
+			}
+			
+		}
+		return delimeter;
+	}
 	private int addNumbersSeperatedByGivenDelimiter(String delimeterSeperatedNumbers, String delimeter, List<String> negativeNos) {
 		int sum  = 0;
 		String [] tokens = delimeterSeperatedNumbers.split(delimeter);
 		for(String token : tokens) { 
 			int no = Integer.parseInt(token);
 			if(no < 0) {
-				System.out.println(no);
 				negativeNos.add(token);
 			}
 			sum = sum+no;

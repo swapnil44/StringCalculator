@@ -63,8 +63,7 @@ public class CalculatorTest {
 	}
 	@Test
 	public void shouldAcceptDelimeterOfLengthMoreThanOne () {
-		fail("Not yet implemented");
-	
+		assertEquals(calculator.Add("//[**]\n1**5"), 6);
 	}
 	@Test
 	public void shouldAcceptMultlepleDelimeter() {
